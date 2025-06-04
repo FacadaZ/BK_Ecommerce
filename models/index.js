@@ -1,11 +1,11 @@
 const { sequelize } = require('../config/db');
-const Temporada = require('./temporada')(sequelize);
-const Cliente = require('./cliente')(sequelize);
-const Insignia = require('./insignia')(sequelize);
+const Temporada = require("./Temporada")(sequelize);
+const Cliente = require('./Cliente')(sequelize);
+const Insignia = require('./Insignia')(sequelize);
 const UsuarioInsignia = require('./UsuarioInsignia')(sequelize);
 const Punto = require('./Punto')(sequelize);
-const Categoria = require('./categoria')(sequelize);
-const Producto = require('./producto')(sequelize);
+const Categoria = require('./Categoria')(sequelize);
+const Producto = require('./Producto')(sequelize);
 const Pedido = require('./pedido')(sequelize);
 const PedidoProducto = require("./pedidoProducto")(sequelize);
 const Cupon = require('./Cupon')(sequelize);
