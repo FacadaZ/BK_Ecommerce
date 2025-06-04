@@ -1,5 +1,4 @@
 const { sequelize } = require('../config/db');
-const Usuario = require('./usuario')(sequelize);
 const Temporada = require('./temporada')(sequelize);
 const Cliente = require('./cliente')(sequelize);
 const Insignia = require('./insignia')(sequelize);
@@ -10,6 +9,7 @@ const Producto = require('./producto')(sequelize);
 const Pedido = require('./pedido')(sequelize);
 const PedidoProducto = require("./pedidoProducto")(sequelize);
 const Cupon = require('./Cupon')(sequelize);
+const Usuario = require('./Usuario')(sequelize);
 
 
 // Asociaciones para Punto, Categoria, UsuarioInsignia
