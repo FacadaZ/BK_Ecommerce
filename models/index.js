@@ -5,11 +5,11 @@ const Insignia = require('./Insignia')(sequelize);
 const UsuarioInsignia = require('./UsuarioInsignia')(sequelize);
 const Punto = require('./Punto')(sequelize);
 const Categoria = require('./Categoria')(sequelize);
-const Producto = require('./Producto')(sequelize);
+const Producto = require("./Producto")(sequelize);
 const Pedido = require('./pedido')(sequelize);
 const PedidoProducto = require("./pedidoProducto")(sequelize);
 const Cupon = require('./Cupon')(sequelize);
-const Usuario = require('./Usuario')(sequelize);
+const Usuario = require("./Usuario")(sequelize);
 
 
 // Asociaciones para Punto, Categoria, UsuarioInsignia
