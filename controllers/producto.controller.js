@@ -3,7 +3,8 @@ const { Categoria, Producto } = require("../models");
 exports.crearProducto = async (req, res) => {
     try {
         const { nombre, descripcion, precio, id_categoria, destacado, stock_tallas } = req.body;
-        const imagen = req.file ? req.file.filename : null;
+        // Usar la URL de Cloudinary
+        const imagen = req.file ? req.file.path : null;
 
         const categoriaExistente = await Categoria.findByPk(id_categoria);
         if (!categoriaExistente) {
@@ -19,7 +20,7 @@ exports.crearProducto = async (req, res) => {
             descripcion,
             precio,
             id_categoria,
-            imagen,
+            imagen, // URL de Cloudinary
             destacado,
             stock_tallas: stockTallasString
         });
@@ -86,7 +87,8 @@ exports.actualizarProducto = async (req, res) => {
     try {
         const { id } = req.params;
         const { nombre, descripcion, precio, id_categoria, destacado, stock_tallas } = req.body;
-        const imagen = req.file ? req.file.filename : undefined;
+        // Usar la URL de Cloudinary si hay nueva imagen
+        const imagen = req.file ? req.file.path : undefined;
 
         const producto = await Producto.findByPk(id);
         if (!producto) {
