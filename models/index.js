@@ -9,7 +9,7 @@ const PedidoProducto = require("./pedidoProducto")(sequelize);
 const Producto = require("./Producto")(sequelize);
 const Punto = require('./Punto')(sequelize);
 const Temporada = require("./Temporada")(sequelize);
-const Usuario = require("./Usuario")(sequelize);
+const Usuario = require("./usuario")(sequelize);
 const UsuarioInsignia = require('./UsuarioInsignia')(sequelize);
 
 
