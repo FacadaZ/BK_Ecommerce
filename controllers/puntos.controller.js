@@ -80,9 +80,15 @@ exports.topUsuariosTemporada = async (req, res) => {
             include: [
                 { model: Cliente, attributes: ['nombre', 'codigo_cliente', 'numero_whatsapp'] }
             ],
-            group: ['Punto.id_cliente'],
+            group: [
+                'Punto.id_cliente',
+                'Cliente.id_cliente',
+                'Cliente.nombre',
+                'Cliente.codigo_cliente',
+                'Cliente.numero_whatsapp'
+            ],
             order: [[Punto.sequelize.literal('total_puntos'), 'DESC']],
-            limit: 10 // Top 10
+            limit: 10
         });
 
         res.status(200).json(top);
@@ -120,7 +126,7 @@ exports.topUsuariosPorTemporada = async (req, res) => {
     try {
         const { id_temporada } = req.params;
         const top = await Punto.findAll({
-            where: { id_temporada },
+            where: { id_temporada: temporada.id_temporada },
             attributes: [
                 [Punto.sequelize.col('Punto.id_cliente'), 'id_cliente'],
                 [Punto.sequelize.fn('SUM', Punto.sequelize.col('puntos')), 'total_puntos']
@@ -128,9 +134,15 @@ exports.topUsuariosPorTemporada = async (req, res) => {
             include: [
                 { model: Cliente, attributes: ['nombre', 'codigo_cliente', 'numero_whatsapp'] }
             ],
-            group: ['Punto.id_cliente'],
+            group: [
+                'Punto.id_cliente',
+                'Cliente.id_cliente',
+                'Cliente.nombre',
+                'Cliente.codigo_cliente',
+                'Cliente.numero_whatsapp'
+            ],
             order: [[Punto.sequelize.literal('total_puntos'), 'DESC']],
-            limit: 10 // Top 10
+            limit: 10
         });
         res.status(200).json(top);
     } catch (error) {
