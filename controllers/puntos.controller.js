@@ -126,7 +126,7 @@ exports.topUsuariosPorTemporada = async (req, res) => {
     try {
         const { id_temporada } = req.params;
         const top = await Punto.findAll({
-            where: { id_temporada: temporada.id_temporada },
+            where: { id_temporada },
             attributes: [
                 [Punto.sequelize.col('Punto.id_cliente'), 'id_cliente'],
                 [Punto.sequelize.fn('SUM', Punto.sequelize.col('puntos')), 'total_puntos']
