@@ -4,19 +4,16 @@ exports.asignarPuntos = async (req, res) => {
     try {
         const { id_cliente, motivo, puntos, id_admin, id_temporada } = req.body;
 
-        // Validar existencia de cliente
         const cliente = await Cliente.findByPk(id_cliente);
         if (!cliente) {
             return res.status(400).json({ error: 'Cliente no encontrado.' });
         }
 
-        // Validar existencia de admin
         const admin = await Usuario.findByPk(id_admin);
         if (!admin) {
             return res.status(400).json({ error: 'Admin no encontrado.' });
         }
 
-        // Validar existencia de temporada
         const temporada = await Temporada.findByPk(id_temporada);
         if (!temporada) {
             return res.status(400).json({ error: 'Temporada no encontrada.' });
@@ -57,7 +54,6 @@ exports.listarPuntosPorCliente = async (req, res) => {
 
 exports.topUsuariosTemporada = async (req, res) => {
     try {
-        // Obtener la temporada actual
         const now = new Date();
         const year = now.getFullYear();
         const month = now.getMonth();
